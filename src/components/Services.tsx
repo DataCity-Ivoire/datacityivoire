@@ -30,7 +30,7 @@ const services = [
 const Services = () => (
   <section id="services" className="py-24 bg-muted/50">
     <div className="container mx-auto px-4">
-      <div className="text-center mb-16">
+      <div className="text-center mb-16 reveal-on-scroll">
         <p className="text-secondary font-semibold text-sm uppercase tracking-wider mb-2">Nos services</p>
         <h2 className="font-display text-3xl lg:text-5xl font-bold text-foreground">
           Des solutions sur mesure
@@ -44,7 +44,7 @@ const Services = () => (
         {services.map((s) => (
           <div
             key={s.title}
-            className="group bg-card rounded-2xl p-6 border border-border hover:border-secondary/40 hover:shadow-glow transition-all duration-300"
+            className="reveal-on-scroll group bg-card rounded-2xl p-6 border border-border hover:border-secondary/40 hover:shadow-glow transition-all duration-300"
           >
             <div className="p-3 rounded-xl bg-gradient-orange w-fit mb-5">
               <s.icon className="w-6 h-6 text-secondary-foreground" />

@@ -14,7 +14,7 @@ const Infrastructure = () => (
     <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] rounded-full bg-secondary/5 blur-3xl" />
 
     <div className="container mx-auto px-4 relative z-10">
-      <div className="max-w-3xl mx-auto text-center mb-16">
+      <div className="max-w-3xl mx-auto text-center mb-16 reveal-on-scroll">
         <p className="text-secondary font-semibold text-sm uppercase tracking-wider mb-2">
           Infrastructure & Souveraineté
         </p>
@@ -31,7 +31,7 @@ const Infrastructure = () => (
       </div>
 
       {/* Values */}
-      <div className="flex flex-wrap justify-center gap-6 mt-12">
+      <div className="flex flex-wrap justify-center gap-6 mt-12 reveal-on-scroll">
         {values.map((v) => (
           <div
             key={v.label}

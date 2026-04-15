@@ -12,14 +12,14 @@ const Contact = () => {
   return (
     <section id="contact" className="py-24 bg-muted/50">
       <div className="container mx-auto px-4">
-        <div className="text-center mb-16">
+        <div className="text-center mb-16 reveal-on-scroll">
           <p className="text-secondary font-semibold text-sm uppercase tracking-wider mb-2">Contact</p>
           <h2 className="font-display text-3xl lg:text-5xl font-bold text-foreground">
             Parlons de votre projet
           </h2>
         </div>
 
-        <div className="max-w-xl mx-auto">
+        <div className="max-w-xl mx-auto reveal-on-scroll">
           {submitted ? (
             <div className="text-center p-12 rounded-2xl bg-card border border-secondary/30">
               <p className="text-2xl mb-2">✅</p>

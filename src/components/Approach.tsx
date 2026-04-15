@@ -24,7 +24,7 @@ const steps = [
 const Approach = () => (
   <section id="approche" className="py-24 bg-background">
     <div className="container mx-auto px-4">
-      <div className="text-center mb-16">
+      <div className="text-center mb-16 reveal-on-scroll">
         <p className="text-secondary font-semibold text-sm uppercase tracking-wider mb-2">Notre approche</p>
         <h2 className="font-display text-3xl lg:text-5xl font-bold text-foreground">
           Une méthodologie éprouvée
@@ -36,7 +36,7 @@ const Approach = () => (
         <div className="hidden md:block absolute top-16 left-1/6 right-1/6 h-0.5 bg-gradient-to-r from-secondary/20 via-secondary to-secondary/20" />
 
         {steps.map((s) => (
-          <div key={s.num} className="relative text-center">
+          <div key={s.num} className="reveal-on-scroll relative text-center">
             <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-gradient-orange mb-6 relative z-10">
               <s.icon className="w-7 h-7 text-secondary-foreground" />
             </div>

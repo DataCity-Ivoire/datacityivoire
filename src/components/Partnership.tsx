@@ -1,7 +1,7 @@
 const Partnership = () => (
   <section className="py-24 bg-background">
     <div className="container mx-auto px-4">
-      <div className="max-w-3xl mx-auto text-center rounded-3xl bg-primary p-12 lg:p-16 relative overflow-hidden">
+      <div className="max-w-3xl mx-auto text-center rounded-3xl bg-primary p-12 lg:p-16 relative overflow-hidden reveal-on-scroll">
         {/* Decorative */}
         <div className="absolute top-0 right-0 w-64 h-64 rounded-full bg-secondary/10 blur-3xl -translate-y-1/2 translate-x-1/2" />
         <div className="absolute bottom-0 left-0 w-48 h-48 rounded-full bg-secondary/5 blur-2xl translate-y-1/2 -translate-x-1/2" />

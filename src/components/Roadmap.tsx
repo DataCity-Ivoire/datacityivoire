@@ -34,7 +34,7 @@ const phases = [
 const Roadmap = () => (
   <section id="roadmap" className="py-24 bg-muted/50">
     <div className="container mx-auto px-4">
-      <div className="text-center mb-16">
+      <div className="text-center mb-16 reveal-on-scroll">
         <p className="text-secondary font-semibold text-sm uppercase tracking-wider mb-2">Feuille de route</p>
         <h2 className="font-display text-3xl lg:text-5xl font-bold text-foreground">
           Vision à long terme
@@ -62,7 +62,7 @@ const Roadmap = () => (
               <div className="hidden md:block md:w-1/2" />
 
               {/* Content card */}
-              <div className="ml-10 md:ml-0 md:w-1/2">
+              <div className="ml-10 md:ml-0 md:w-1/2 reveal-on-scroll">
                 <div className={`rounded-2xl p-6 border ${p.active ? "border-secondary/40 bg-card shadow-glow" : "border-border bg-card"}`}>
                   <div className="flex items-baseline gap-3 mb-3">
                     <span className="text-secondary font-display font-bold text-lg">{p.period}</span>

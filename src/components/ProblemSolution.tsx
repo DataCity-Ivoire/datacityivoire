@@ -17,7 +17,7 @@ const ProblemSolution = () => (
     <div className="container mx-auto px-4">
       <div className="grid md:grid-cols-2 gap-16">
         {/* Problem */}
-        <div>
+        <div className="reveal-on-scroll">
           <p className="text-secondary font-semibold text-sm uppercase tracking-wider mb-2">Le constat</p>
           <h2 className="font-display text-3xl lg:text-4xl font-bold text-foreground mb-8">
             Les entreprises africaines méritent mieux
@@ -35,7 +35,7 @@ const ProblemSolution = () => (
         </div>
 
         {/* Solution */}
-        <div>
+        <div className="reveal-on-scroll">
           <p className="text-secondary font-semibold text-sm uppercase tracking-wider mb-2">Notre réponse</p>
           <h2 className="font-display text-3xl lg:text-4xl font-bold text-foreground mb-8">
             Une plateforme unifiée et souveraine
