@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+
 const links = [
   { label: "Services", href: "#services" },
   { label: "Le Groupe", href: "#groupe" },
@@ -35,9 +37,17 @@ const Footer = () => (
 
       <div className="mt-8 pt-8 border-t border-primary-foreground/10 flex flex-col md:flex-row items-center justify-between gap-4 text-sm text-primary-foreground/40">
         <p>© {new Date().getFullYear()} Data City Ivoire. Tous droits réservés.</p>
-        <a href="mailto:contact@datacityivoire.ci" className="hover:text-secondary transition-colors">
-          contact@datacityivoire.ci
-        </a>
+        <div className="flex items-center gap-6">
+          <Link to="/mentions-legales" className="hover:text-secondary transition-colors">
+            Mentions légales
+          </Link>
+          <Link to="/politique-confidentialite" className="hover:text-secondary transition-colors">
+            Politique de confidentialité
+          </Link>
+          <a href="mailto:contact@datacityivoire.ci" className="hover:text-secondary transition-colors">
+            contact@datacityivoire.ci
+          </a>
+        </div>
       </div>
     </div>
   </footer>
