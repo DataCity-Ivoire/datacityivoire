@@ -10,22 +10,27 @@ import Infrastructure from "@/components/Infrastructure";
 import Partnership from "@/components/Partnership";
 import Contact from "@/components/Contact";
 import Footer from "@/components/Footer";
+import { useScrollRevealAll } from "@/hooks/useScrollReveal";
 
-const Index = () => (
-  <div className="min-h-screen">
-    <Navbar />
-    <HeroSection />
-    <ProblemSolution />
-    <Services />
-    <GroupStructure />
-    <Approach />
-    <Roadmap />
-    <VisionImpact />
-    <Infrastructure />
-    <Partnership />
-    <Contact />
-    <Footer />
-  </div>
-);
+const Index = () => {
+  useScrollRevealAll();
+
+  return (
+    <div className="min-h-screen">
+      <Navbar />
+      <HeroSection />
+      <ProblemSolution />
+      <Services />
+      <GroupStructure />
+      <Approach />
+      <Roadmap />
+      <VisionImpact />
+      <Infrastructure />
+      <Partnership />
+      <Contact />
+      <Footer />
+    </div>
+  );
+};
 
 export default Index;
