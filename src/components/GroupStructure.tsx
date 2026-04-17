@@ -3,16 +3,17 @@ import { useScrollReveal } from "@/hooks/useScrollReveal";
 
 const entities = [
   {
-    icon: Database,
+    icon:  Database,
     name: "Data City",
     abbr: "DC",
     role: "Le socle technologique du groupe",
     components: [
       { icon: Server, label: "Infrastructure numérique" },
       { icon: Cloud, label: "Cloud local" },
-      { icon: Brain, label: "Intelligence artificielle appliquée" },
+      { icon: Brain, label: "Intelligence artificielle appliquée au contexte africain" },
+      { icon: Search, label: "Science des données & tableaux de bord décisionnels" },
       { icon: Shield, label: "Cybersécurité et protection des données" },
-      { icon: Search, label: "Science des données" },
+      
     ],
     objectif: "Offrir une infrastructure numérique robuste, fiable et souveraine, capable de soutenir le développement de services numériques à grande échelle.",
     color: "from-dc-blue to-dc-blue-light",
@@ -32,7 +33,7 @@ const entities = [
     color: "from-dc-orange to-dc-orange-light",
   },
   {
-    icon: Wifi,
+    icon: Globe,
     name: "Ivoire Connect",
     abbr: "IConn",
     role: "La plateforme de connectivité souveraine",

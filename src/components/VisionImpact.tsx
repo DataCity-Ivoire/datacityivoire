@@ -20,7 +20,7 @@ const VisionImpact = () => {
             Bâtir le futur numérique africain
           </h2>
           <p className="mt-4 text-muted-foreground max-w-3xl mx-auto text-lg leading-relaxed">
-            Notre vision : devenir à l'horizon <span className="text-secondary font-semibold">2050</span> un écosystème numérique africain souverain.
+          "Devenir l'un des premiers <span className="text-secondary font-semibold">écosystèmes numériques africains souverains</span> capable de couvrir l'ensemble de la chaîne de valeur numérique."
           </p>
         </div>
 

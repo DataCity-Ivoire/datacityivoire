@@ -1,6 +1,6 @@
 const phases = [
   {
-    period: "0 – 5 ans",
+    period: "0 – 10 ans",
     label: "Fondation",
     items: [
       "Projets pilotes stratégiques",
@@ -10,7 +10,7 @@ const phases = [
     active: true,
   },
   {
-    period: "5 – 10 ans",
+    period: "10 – 15 ans",
     label: "Infrastructure",
     items: [
       "Déploiement de data centers",
@@ -20,7 +20,7 @@ const phases = [
     active: false,
   },
   {
-    period: "10 – 20 ans",
+    period: "15 – 30 ans",
     label: "Écosystème",
     items: [
       "Réseau panafricain de données",

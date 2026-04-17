@@ -20,6 +20,7 @@ const Footer = () => (
           <p className="text-primary-foreground/50 text-sm mt-1">
             L'Afrique connectée, intelligente et souveraine
           </p>
+
         </div>
 
         <nav className="flex flex-wrap justify-center gap-6">
@@ -47,6 +48,9 @@ const Footer = () => (
           <a href="mailto:contact@datacityivoire.ci" className="hover:text-secondary transition-colors">
             contact@datacityivoire.ci
           </a>
+          <span style={{ fontSize: "0.72rem", color: "rgba(242,237,228,0.22)", display: "flex", alignItems: "center", gap: 6 }}>
+            🇨🇮 Conçu en Côte d'Ivoire, pour l'Afrique
+          </span>
         </div>
       </div>
     </div>
