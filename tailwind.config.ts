@@ -14,9 +14,10 @@ export default {
     },
     extend: {
       fontFamily: {
-        sans: ["Inter", "sans-serif"],
-        display: ["Space Grotesk", "sans-serif"],
+        sans: ["Inter", "system-ui", "sans-serif"],
+        display: ["Plus Jakarta Sans", "Inter", "sans-serif"],
       },
+
       colors: {
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",
@@ -61,16 +62,19 @@ export default {
           border: "hsl(var(--sidebar-border))",
           ring: "hsl(var(--sidebar-ring))",
         },
-        "dc-blue": {
-          DEFAULT: "hsl(213 71% 14%)",
-          light: "hsl(213 60% 25%)",
-          dark: "hsl(213 60% 8%)",
+        surface: {
+          DEFAULT: "hsl(var(--surface))",
+          foreground: "hsl(var(--surface-foreground))",
         },
-        "dc-orange": {
-          DEFAULT: "hsl(30 100% 49%)",
-          light: "hsl(30 100% 60%)",
-          dark: "hsl(25 100% 40%)",
+        success: {
+          DEFAULT: "hsl(var(--success))",
+          foreground: "hsl(var(--success-foreground))",
         },
+        warning: {
+          DEFAULT: "hsl(var(--warning))",
+          foreground: "hsl(var(--warning-foreground))",
+        },
+
       },
       borderRadius: {
         lg: "var(--radius)",
