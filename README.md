@@ -129,7 +129,7 @@ Data City Ivoire répond à cet enjeu en développant une infrastructure numéri
 
 ## 📞 Contact
 
-- Email : contact@datacityivoire.ci  
+- Email : datacityivoire@gmail.com  
 - WhatsApp : +225 XX XX XX XX  
 - Localisation : Abidjan, Côte d’Ivoire  
 

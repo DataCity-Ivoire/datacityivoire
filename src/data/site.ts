@@ -5,29 +5,50 @@ export const site = {
   slogan: "L'Afrique connectée, intelligente et souveraine.",
   description:
     "Nous aidons les organisations africaines à accélérer leur transformation numérique grâce à la donnée, l'intelligence artificielle et des solutions technologiques sur mesure.",
-  email: "contact@datacityivoire.ci",
-  phone: "+225 07 00 00 00 00",
-  whatsapp: "2250700000000",
+  email: "datacityivoire@gmail.com",
+  // Numéro repris du bouton WhatsApp, où il était codé en dur. Il diverge du
+  // placeholder qui figurait ici : à confirmer avant mise en ligne.
+  phone: "+225 07 19 81 17 17",
+  whatsapp: "2250719811717",
   address: "Abidjan, Côte d'Ivoire",
+  // TODO : remplacer par les vrais profils (ces liens pointent vers les
+  // pages d'accueil des plateformes, pas vers les comptes de l'entreprise).
   socials: [
-    { label: "LinkedIn", href: "https://www.linkedin.com" },
-    { label: "Facebook", href: "https://www.facebook.com" },
-    { label: "Instagram", href: "https://www.instagram.com" },
-    { label: "X", href: "https://x.com" },
-    { label: "YouTube", href: "https://www.youtube.com" },
-    { label: "GitHub", href: "https://github.com" },
+    { label: "LinkedIn", href: "https://www.linkedin.com", icon: "linkedin" as const },
+    { label: "Facebook", href: "https://www.facebook.com", icon: "facebook" as const },
+    { label: "Instagram", href: "https://www.instagram.com", icon: "instagram" as const },
+    { label: "X", href: "https://x.com", icon: "x" as const },
+    { label: "YouTube", href: "https://www.youtube.com", icon: "youtube" as const },
+    { label: "GitHub", href: "https://github.com", icon: "github" as const },
   ],
 };
 
-export const navigation = [
-  { label: "Accueil", to: "/" },
-  { label: "À propos", to: "/a-propos" },
-  { label: "Expertises", to: "/expertises" },
-  { label: "Méthodologie", to: "/methodologie" },
-  { label: "Réalisations", to: "/realisations" },
-  { label: "Blog", to: "/blog" },
-  { label: "Carrières", to: "/carrieres" },
-  { label: "Contact", to: "/contact" },
+export interface NavItem {
+  label: string;
+  /** Identifiant de la section sur la page unique. */
+  id: string;
+}
+
+/** Navigation principale. Contact est porté par le bouton d'appel à l'action. */
+/* L'ordre suit celui du défilement de la page. */
+export const navigation: NavItem[] = [
+  { label: "Accueil", id: "accueil" },
+  { label: "Expertises", id: "expertises" },
+  { label: "Méthodologie", id: "methodologie" },
+  { label: "Blog", id: "blog" },
+  { label: "À propos", id: "a-propos" },
+];
+
+/** Toutes les sections de la page, dans l'ordre — utilisé par le pied de page. */
+export const allSections: NavItem[] = [
+  { label: "Accueil", id: "accueil" },
+  { label: "Expertises", id: "expertises" },
+  { label: "Méthodologie", id: "methodologie" },
+  { label: "Blog", id: "blog" },
+  { label: "À propos", id: "a-propos" },
+  // Il n'y a pas de section « contact » dans la page : `HashScroll` intercepte
+  // cette ancre et ouvre la fenêtre modale de contact.
+  { label: "Contact", id: "contact" },
 ];
 
 export const expertises = [

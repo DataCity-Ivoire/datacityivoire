@@ -1,33 +1,21 @@
-import { Link } from "react-router-dom";
-import { ArrowUpRight } from "lucide-react";
 import Reveal from "@/components/Reveal";
 import { expertises } from "@/data/site";
 
-const ExpertiseGrid = ({ limit }: { limit?: number }) => {
-  const items = limit ? expertises.slice(0, limit) : expertises;
-
+const ExpertiseGrid = () => {
   return (
     <section className="bg-surface py-24">
       <div className="container mx-auto px-4">
-        <Reveal className="flex flex-col justify-between gap-6 md:flex-row md:items-end">
-          <div className="max-w-2xl">
-            <p className="text-sm font-semibold uppercase tracking-[0.2em] text-accent">
-              Nos expertises
-            </p>
-            <h2 className="mt-4 font-display text-3xl font-bold lg:text-5xl">
-              Un socle technologique complet
-            </h2>
-          </div>
-          <Link
-            to="/expertises"
-            className="inline-flex items-center gap-2 text-sm font-semibold text-accent hover:underline"
-          >
-            Voir toutes les expertises <ArrowUpRight className="h-4 w-4" />
-          </Link>
+        <Reveal className="mx-auto max-w-2xl text-center">
+          <span className="inline-flex items-center rounded-full border border-accent/30 bg-accent/10 px-4 py-1.5 text-xs font-semibold uppercase tracking-[0.2em] text-accent">
+            Nos expertises
+          </span>
+          <h2 className="mt-6 font-display text-3xl font-bold lg:text-5xl">
+            Un socle technologique complet
+          </h2>
         </Reveal>
 
         <div className="mt-14 grid gap-px overflow-hidden rounded-3xl border border-border bg-border sm:grid-cols-2 lg:grid-cols-3">
-          {items.map((e, i) => (
+          {expertises.map((e, i) => (
             <Reveal key={e.title} delay={(i % 3) * 0.06}>
               <article className="group h-full bg-card p-8 transition-colors duration-300 hover:bg-accent/5">
                 <e.icon className="h-6 w-6 text-accent transition-transform duration-300 group-hover:scale-110" />

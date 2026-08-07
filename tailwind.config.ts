@@ -8,8 +8,14 @@ export default {
     container: {
       center: true,
       padding: "2rem",
+      // Sans ces paliers, le conteneur n'a aucune largeur maximale en dessous
+      // de 1536px : le contenu s'étalait bord à bord au lieu d'être centré.
       screens: {
-        "2xl": "1400px",
+        sm: "640px",
+        md: "768px",
+        lg: "1024px",
+        xl: "1200px",
+        "2xl": "1320px",
       },
     },
     extend: {
