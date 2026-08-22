@@ -1,0 +1,15 @@
+{
+  "redirects": [
+    {
+      "source": "/:path*",
+      "has": [
+        {
+          "type": "host",
+          "value": "datacityivoire.vercel.app"
+        }
+      ],
+      "destination": "https://www.datacityivoire.ci/:path*",
+      "permanent": true
+    }
+  ]
+}
