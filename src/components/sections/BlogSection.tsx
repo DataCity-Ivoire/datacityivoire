@@ -197,21 +197,21 @@ const BlogSection = () => {
   const [featured, ...rest] = visible;
 
   return (
-    <section id="blog" className="scroll-mt-24 bg-background py-24">
+    <section id="blog" className="scroll-mt-24 bg-background py-16 sm:py-20 lg:py-24">
       <div className="container mx-auto px-4">
         <div className="mx-auto max-w-2xl text-center">
           <Reveal>
-            <span className="inline-flex items-center rounded-full border border-accent/30 bg-accent/10 px-4 py-1.5 text-xs font-semibold uppercase tracking-[0.2em] text-accent">
+            <span className="inline-flex items-center rounded-full border border-accent/30 bg-accent/10 px-3 py-1 text-[10px] font-semibold uppercase tracking-[0.2em] text-accent sm:px-4 sm:py-1.5 sm:text-xs">
               Insights &amp; expertise
             </span>
           </Reveal>
           <Reveal delay={0.08}>
-            <h2 className="mt-6 font-display text-4xl font-bold leading-tight lg:text-5xl">
+            <h2 className="mt-4 font-display text-2xl font-bold leading-tight sm:mt-6 sm:text-3xl lg:text-5xl">
               Notre <span className="text-gradient">Blog</span>
             </h2>
           </Reveal>
           <Reveal delay={0.16}>
-            <p className="mt-5 leading-relaxed text-muted-foreground">
+            <p className="mt-4 text-sm leading-relaxed text-muted-foreground sm:mt-5">
               Tendances technologiques, retours d'expérience et bonnes pratiques pour accélérer
               votre transformation numérique.
             </p>
@@ -220,7 +220,7 @@ const BlogSection = () => {
 
         {/* Filtres par catégorie */}
         <Reveal delay={0.2}>
-          <div className="mt-12 flex flex-wrap justify-center gap-2.5">
+          <div className="mt-8 flex flex-wrap justify-center gap-2 sm:mt-10 sm:gap-2.5 lg:mt-12">
             {FILTERS.map((f) => (
               <button
                 key={f}
@@ -228,7 +228,7 @@ const BlogSection = () => {
                 onClick={() => setFilter(f)}
                 aria-pressed={filter === f}
                 className={cn(
-                  "min-h-11 rounded-full border px-5 text-sm font-medium transition-colors",
+                  "min-h-10 rounded-full border px-3 py-2 text-xs font-medium transition-colors sm:min-h-11 sm:px-5 sm:text-sm",
                   filter === f
                     ? "border-accent bg-accent/15 text-accent"
                     : "border-border text-muted-foreground hover:border-accent/40 hover:text-foreground",
@@ -245,36 +245,27 @@ const BlogSection = () => {
           <Reveal delay={0.24}>
             <article
               className={cn(
-                "group mt-12 grid overflow-hidden rounded-3xl border border-border bg-card transition-all duration-300 hover:shadow-elevated lg:grid-cols-2",
+                "group mt-8 grid overflow-hidden rounded-2xl border border-border bg-card transition-all duration-300 hover:shadow-elevated sm:mt-10 sm:rounded-3xl lg:mt-12 lg:grid-cols-2",
                 CATEGORIES[featured.category].hover,
               )}
             >
               <Cover
                 category={featured.category}
                 imageFile={featured.imageFile}
-                className="min-h-[16rem] lg:min-h-[22rem]"
+                className="min-h-[12rem] sm:min-h-[16rem] lg:min-h-[22rem]"
               />
 
-              <div className="flex flex-col p-8 lg:p-10">
-                <p className="text-xs text-muted-foreground">
-                  {featured.date} <span className="mx-1.5">•</span> {featured.readingTime}
+              <div className="flex flex-col p-5 sm:p-6 lg:p-8 lg:px-10">
+                <p className="text-[10px] text-muted-foreground sm:text-xs">
+                  {featured.date} <span className="mx-1">•</span> {featured.readingTime}
                 </p>
-                <h3 className="mt-4 font-display text-2xl font-bold leading-snug lg:text-3xl">
+                <h3 className="mt-3 font-display text-lg font-bold leading-snug sm:mt-4 sm:text-xl lg:text-2xl lg:leading-tight">
                   {featured.title}
                 </h3>
-                <p className="mt-4 leading-relaxed text-muted-foreground">{featured.excerpt}</p>
+                <p className="mt-3 text-sm leading-relaxed text-muted-foreground sm:mt-4">{featured.excerpt}</p>
 
-                <div className="mt-auto flex flex-wrap items-center justify-between gap-4 border-t border-border pt-6">
-                  <span className="text-sm text-muted-foreground">Équipe Data City Ivoire</span>
-                  <span
-                    className={cn(
-                      "inline-flex items-center gap-2 text-sm font-semibold",
-                      CATEGORIES[featured.category].tint,
-                    )}
-                  >
-                    Lire l'article
-                    <ArrowRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" />
-                  </span>
+                <div className="mt-auto flex flex-wrap items-center justify-between gap-3 border-t border-border pt-4 sm:gap-4 sm:pt-6">
+                  <span className="text-xs text-muted-foreground sm:text-sm">Équipe Data City Ivoire</span>
                 </div>
               </div>
             </article>
@@ -283,31 +274,22 @@ const BlogSection = () => {
 
         {/* Articles suivants */}
         {rest.length > 0 && (
-          <div className="mt-6 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+          <div className="mt-6 grid gap-4 sm:mt-8 sm:gap-6 md:grid-cols-2 lg:grid-cols-3">
             {rest.map((a, i) => (
               <Reveal key={a.title} delay={(i % 3) * 0.08}>
                 <article
                   className={cn(
-                    "group flex h-full flex-col overflow-hidden rounded-2xl border border-border bg-card transition-all duration-300 hover:-translate-y-1 hover:shadow-elevated",
+                    "group flex h-full flex-col overflow-hidden rounded-xl border border-border bg-card transition-all duration-300 hover:-translate-y-1 hover:shadow-elevated sm:rounded-2xl",
                     CATEGORIES[a.category].hover,
                   )}
                 >
-                  <Cover category={a.category} imageFile={a.imageFile} className="h-44" />
-                  <div className="flex flex-1 flex-col p-6">
-                    <p className="text-xs text-muted-foreground">
-                      {a.date} <span className="mx-1.5">•</span> {a.readingTime}
+                  <Cover category={a.category} imageFile={a.imageFile} className="h-36 sm:h-44" />
+                  <div className="flex flex-1 flex-col p-4 sm:p-6">
+                    <p className="text-[10px] text-muted-foreground sm:text-xs">
+                      {a.date} <span className="mx-1">•</span> {a.readingTime}
                     </p>
-                    <h3 className="mt-3 font-display text-lg font-bold leading-snug">{a.title}</h3>
-                    <p className="mt-3 text-sm leading-relaxed text-muted-foreground">{a.excerpt}</p>
-                    <span
-                      className={cn(
-                        "mt-auto inline-flex items-center gap-2 pt-6 text-sm font-semibold",
-                        CATEGORIES[a.category].tint,
-                      )}
-                    >
-                      Lire l'article
-                      <ArrowRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" />
-                    </span>
+                    <h3 className="mt-2 font-display text-sm font-bold leading-snug sm:mt-3 sm:text-base sm:leading-tight">{a.title}</h3>
+                    <p className="mt-2 text-xs leading-relaxed text-muted-foreground sm:mt-3 sm:text-sm">{a.excerpt}</p>
                   </div>
                 </article>
               </Reveal>
@@ -316,7 +298,7 @@ const BlogSection = () => {
         )}
       </div>
 
-      <div className="mt-16">
+      <div className="mt-12 sm:mt-16">
         <NewsletterBar />
       </div>
     </section>

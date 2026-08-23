@@ -111,21 +111,21 @@ const ApproachSection = () => {
     .join(", ")})`;
 
   return (
-    <section className="bg-background py-24">
+    <section className="bg-background py-16 sm:py-20 lg:py-24">
       <div className="container mx-auto px-4">
         <div className="mx-auto max-w-2xl text-center">
           <Reveal>
-            <span className="inline-flex items-center rounded-full border border-accent/30 bg-accent/10 px-4 py-1.5 text-xs font-semibold uppercase tracking-[0.2em] text-accent">
+            <span className="inline-flex items-center rounded-full border border-accent/30 bg-accent/10 px-3 py-1 text-[10px] font-semibold uppercase tracking-[0.2em] text-accent sm:px-4 sm:py-1.5 sm:text-xs">
               Notre processus
             </span>
           </Reveal>
           <Reveal delay={0.08}>
-            <h2 className="mt-6 font-display text-4xl font-bold leading-tight lg:text-5xl">
+            <h2 className="mt-4 font-display text-2xl font-bold leading-tight sm:mt-6 sm:text-3xl lg:text-5xl">
               Notre <span className="text-gradient">Approche</span>
             </h2>
           </Reveal>
           <Reveal delay={0.16}>
-            <p className="mt-5 leading-relaxed text-muted-foreground">
+            <p className="mt-4 text-sm leading-relaxed text-muted-foreground sm:mt-5">
               Une méthodologie éprouvée, agile et structurée, qui garantit des livraisons de qualité
               dans les délais et le budget convenus.
             </p>
@@ -134,15 +134,15 @@ const ApproachSection = () => {
 
         {/* Sélecteur d'étapes */}
         <Reveal delay={0.2}>
-          <div ref={wrapperRef} className="relative mt-16">
+          <div ref={wrapperRef} className="relative mt-10 sm:mt-12 lg:mt-16">
             {/* Rail gris de fond, au centre vertical des icônes */}
             <div
-              className="absolute inset-x-0 top-7 hidden h-px bg-border lg:block"
+              className="absolute inset-x-0 top-6 hidden h-px bg-border sm:top-7 lg:block"
               aria-hidden="true"
             />
             {/* Progression colorée, du centre de la 1re icône à celui de l'étape courante */}
             <div
-              className="absolute top-7 hidden h-px transition-all duration-500 ease-out lg:block"
+              className="absolute top-6 hidden h-px transition-all duration-500 ease-out sm:top-7 lg:block"
               style={{
                 left: progressLeft,
                 width: progressWidth,
@@ -173,13 +173,13 @@ const ApproachSection = () => {
                       <span
                         ref={(el) => (boxRefs.current[i] = el)}
                         className={cn(
-                          "grid h-14 w-14 place-items-center rounded-xl border transition-colors duration-300",
+                          "grid h-12 w-12 place-items-center rounded-xl border transition-colors duration-300 sm:h-14 sm:w-14",
                           isReached ? s.box : "border-border bg-card group-hover:border-border",
                         )}
                       >
                         <s.icon
                           className={cn(
-                            "h-5 w-5 transition-colors duration-300",
+                            "h-4 w-4 transition-colors duration-300 sm:h-5 sm:w-5",
                             isReached ? s.tint : "text-muted-foreground",
                           )}
                         />
@@ -188,7 +188,7 @@ const ApproachSection = () => {
                       {isReached && (
                         <span
                           className={cn(
-                            "absolute -right-1 -top-1 h-2.5 w-2.5 rounded-full ring-2 ring-background",
+                            "absolute -right-1 -top-1 h-2 w-2 rounded-full ring-2 ring-background sm:h-2.5 sm:w-2.5",
                             s.dot,
                           )}
                           aria-hidden="true"
@@ -198,7 +198,7 @@ const ApproachSection = () => {
 
                     <span
                       className={cn(
-                        "mt-4 block text-xs font-semibold transition-colors duration-300",
+                        "mt-3 block text-[10px] font-semibold transition-colors duration-300 sm:mt-4 sm:text-xs",
                         isActive ? s.tint : "text-muted-foreground",
                       )}
                     >
@@ -206,7 +206,7 @@ const ApproachSection = () => {
                     </span>
                     <span
                       className={cn(
-                        "mt-0.5 block text-sm transition-colors duration-300",
+                        "mt-0.5 block text-xs transition-colors duration-300 sm:text-sm",
                         isActive ? "font-semibold text-foreground" : "text-muted-foreground",
                       )}
                     >
@@ -224,7 +224,7 @@ const ApproachSection = () => {
           id="approche-panneau"
           role="tabpanel"
           aria-labelledby={`approche-onglet-${active}`}
-          className="mt-10 rounded-3xl border border-border bg-card p-8 lg:p-10"
+          className="mt-8 rounded-2xl border border-border bg-card p-5 sm:mt-10 sm:rounded-3xl sm:p-8 lg:p-10"
         >
           {/* Pas d'animation de sortie : le nouveau contenu est monté
               immédiatement au changement de `key`. Avec `AnimatePresence
@@ -235,27 +235,27 @@ const ApproachSection = () => {
             initial={{ opacity: 0, y: 14 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.35, ease: [0.22, 1, 0.36, 1] }}
-            className="flex flex-col gap-6 sm:flex-row"
+            className="flex flex-col gap-4 sm:gap-6 sm:flex-row"
           >
               <span
                 className={cn(
-                  "grid h-14 w-14 shrink-0 place-items-center rounded-xl border",
+                  "grid h-12 w-12 shrink-0 place-items-center rounded-xl border sm:h-14 sm:w-14",
                   current.box,
                 )}
               >
-                <CurrentIcon className={cn("h-6 w-6", current.tint)} />
+                <CurrentIcon className={cn("h-5 w-5 sm:h-6 sm:w-6", current.tint)} />
               </span>
               <div>
                 <p
                   className={cn(
-                    "text-xs font-semibold uppercase tracking-[0.2em]",
+                    "text-[10px] font-semibold uppercase tracking-[0.2em] sm:text-xs",
                     current.tint,
                   )}
                 >
                   Étape {String(active + 1).padStart(2, "0")} — {current.label}
                 </p>
-                <h3 className="mt-2 font-display text-2xl font-bold">{current.title}</h3>
-                <p className="mt-3 max-w-2xl leading-relaxed text-muted-foreground">
+                <h3 className="mt-2 font-display text-lg font-bold leading-snug sm:text-xl sm:leading-tight">{current.title}</h3>
+                <p className="mt-2 max-w-2xl text-sm leading-relaxed text-muted-foreground sm:mt-3">
                   {current.text}
                 </p>
             </div>
@@ -263,7 +263,7 @@ const ApproachSection = () => {
         </div>
 
         {/* Pagination : la barre active prend la couleur de son étape */}
-        <div className="mt-8 flex items-center justify-center gap-2">
+        <div className="mt-6 flex items-center justify-center gap-2 sm:mt-8">
           {steps.map((s, i) => (
             <button
               key={s.label}
@@ -271,8 +271,8 @@ const ApproachSection = () => {
               onClick={() => setActive(i)}
               aria-label={`Aller à l'étape ${i + 1} : ${s.label}`}
               className={cn(
-                "h-1.5 rounded-full transition-all duration-300",
-                i === active ? cn("w-8", s.bar) : "w-1.5 bg-border hover:bg-muted-foreground",
+                "h-1 rounded-full transition-all duration-300",
+                i === active ? cn("w-6", s.bar) : "w-1 bg-border hover:bg-muted-foreground",
               )}
             />
           ))}

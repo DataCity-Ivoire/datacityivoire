@@ -99,47 +99,47 @@ const Counter = ({ to, suffix }: { to: number; suffix: string }) => {
 };
 
 const StrengthsSection = () => (
-  <section className="bg-background py-24">
+  <section className="bg-background py-16 sm:py-20 lg:py-24">
     <div className="container mx-auto px-4">
       {/* Chiffres clés */}
-      <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+      <div className="grid gap-4 sm:gap-6 sm:grid-cols-2 lg:grid-cols-4">
         {stats.map((s, i) => (
           <Reveal key={s.label} delay={i * 0.08}>
-            <article className="group h-full rounded-2xl border border-border bg-card p-8 text-center transition-all duration-300 hover:-translate-y-1 hover:border-accent/50 hover:shadow-elevated">
-              <p className="font-display text-4xl font-bold lg:text-5xl">
+            <article className="group h-full rounded-2xl border border-border bg-card p-5 text-center transition-all duration-300 hover:-translate-y-1 hover:border-accent/50 hover:shadow-elevated sm:p-6 lg:p-8">
+              <p className="font-display text-3xl font-bold sm:text-4xl lg:text-5xl">
                 <Counter to={s.to} suffix={s.suffix} />
               </p>
-              <p className="mt-3 font-display text-sm font-bold">{s.label}</p>
-              <p className="mt-1 text-xs text-muted-foreground">{s.sub}</p>
+              <p className="mt-2 font-display text-xs font-bold sm:mt-3 sm:text-sm">{s.label}</p>
+              <p className="mt-1 text-[10px] text-muted-foreground sm:text-xs">{s.sub}</p>
             </article>
           </Reveal>
         ))}
       </div>
 
       {/* Nos atouts */}
-      <div className="mx-auto mt-24 max-w-2xl text-center">
+      <div className="mx-auto mt-16 max-w-2xl text-center sm:mt-20 lg:mt-24">
         <Reveal>
-          <span className="inline-flex items-center rounded-full border border-accent/30 bg-accent/10 px-4 py-1.5 text-xs font-semibold uppercase tracking-[0.2em] text-accent">
+          <span className="inline-flex items-center rounded-full border border-accent/30 bg-accent/10 px-3 py-1 text-[10px] font-semibold uppercase tracking-[0.2em] text-accent sm:px-4 sm:py-1.5 sm:text-xs">
             Nos atouts
           </span>
         </Reveal>
         <Reveal delay={0.08}>
-          <h2 className="mt-6 font-display text-4xl font-bold leading-tight lg:text-5xl">
+          <h2 className="mt-4 font-display text-2xl font-bold leading-tight sm:mt-6 sm:text-3xl lg:text-5xl">
             Pourquoi nous <span className="text-gradient">choisir</span> ?
           </h2>
         </Reveal>
       </div>
 
-      <div className="mt-14 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+      <div className="mt-10 grid gap-4 sm:mt-12 sm:gap-6 md:grid-cols-2 lg:mt-14 lg:grid-cols-3">
         {strengths.map((s, i) => (
           <Reveal key={s.title} delay={(i % 3) * 0.08}>
-            <article className="group flex h-full gap-4 rounded-2xl border border-border bg-card p-6 transition-all duration-300 hover:-translate-y-1 hover:border-accent/50 hover:shadow-elevated">
-              <span className="shrink-0 text-xl" aria-hidden="true">
+            <article className="group flex h-full gap-3 rounded-2xl border border-border bg-card p-4 transition-all duration-300 hover:-translate-y-1 hover:border-accent/50 hover:shadow-elevated sm:gap-4 sm:p-6">
+              <span className="shrink-0 text-lg sm:text-xl" aria-hidden="true">
                 {s.emoji}
               </span>
               <div>
-                <h3 className="font-display text-base font-bold">{s.title}</h3>
-                <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{s.text}</p>
+                <h3 className="font-display text-sm font-bold sm:text-base">{s.title}</h3>
+                <p className="mt-1.5 text-xs leading-relaxed text-muted-foreground sm:mt-2 sm:text-sm">{s.text}</p>
               </div>
             </article>
           </Reveal>

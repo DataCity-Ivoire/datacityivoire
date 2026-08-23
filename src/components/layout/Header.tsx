@@ -62,6 +62,12 @@ const Header = () => {
   const goToSection = useCallback(
     (id: string) => {
       setOpen(false);
+      // Le menu mobile pose `overflow: hidden` sur le body tant qu'il est ouvert
+      // (voir l'effet ci-dessus) et ne le retire que lorsque son propre effet de
+      // nettoyage s'exécute — de façon asynchrone, après ce gestionnaire. Sans ce
+      // reset immédiat, `scrollIntoView` ci-dessous s'exécute pendant que le body
+      // est encore bloqué et n'a alors aucun effet : la page ne défile jamais.
+      document.body.style.overflow = "";
       if (!onHomePage) {
         navigate(`/#${id}`);
         return;
@@ -80,64 +86,73 @@ const Header = () => {
         : "text-white/70 hover:text-white";
 
   return (
-    <header
-      className={cn(
-        "fixed inset-x-0 top-0 z-50 transition-all duration-300",
-        scrolled ? "glass shadow-elevated" : "bg-transparent border-b border-transparent",
-      )}
-    >
-      {/* Les deux colonnes latérales sont en `flex-1` : quelle que soit la
-          largeur du logo ou des actions, elles se partagent l'espace restant
-          à parts égales, donc la nav centrale reste toujours centrée sur la
-          ligne — pas seulement dans l'espace qu'il reste entre les deux. */}
-      <div className="container mx-auto flex h-18 items-center px-4 py-3">
-        <div className="flex flex-1 items-center">
-          <Link to="/" aria-label="Data City Ivoire — accueil">
-            <Logo textClassName={scrolled ? "text-foreground" : "text-white"} />
-          </Link>
-        </div>
+    <header className="fixed inset-x-0 top-0 z-50">
+      {/* `.glass` pose un `backdrop-filter`, ce qui transforme l'élément en
+          conteneur de positionnement pour ses descendants `fixed` (au lieu du
+          viewport) — si cette classe était sur le <header> lui-même, le menu
+          mobile plein écran ci-dessous (position: fixed) se retrouverait
+          confiné à la hauteur de cette barre une fois la page scrollée, donc
+          invisible. Elle est donc posée sur ce wrapper interne, qui ne
+          contient que la barre du haut — jamais sur <header>. */}
+      <div
+        className={cn(
+          "transition-all duration-300",
+          scrolled ? "glass shadow-elevated" : "bg-transparent border-b border-transparent",
+        )}
+      >
+        {/* Les deux colonnes latérales sont en `flex-1` : quelle que soit la
+            largeur du logo ou des actions, elles se partagent l'espace restant
+            à parts égales, donc la nav centrale reste toujours centrée sur la
+            ligne — pas seulement dans l'espace qu'il reste entre les deux. */}
+        <div className="container mx-auto flex h-18 items-center px-4 py-3">
+          <div className="flex flex-1 items-center">
+            <Link to="/" aria-label="Data City Ivoire — accueil">
+              <Logo textClassName={scrolled ? "text-foreground" : "text-white"} />
+            </Link>
+          </div>
 
-        <nav className="hidden shrink-0 items-center gap-1 lg:flex" aria-label="Navigation principale">
-          {navigation.map((item) => (
+          <nav className="hidden shrink-0 items-center gap-1 lg:flex" aria-label="Navigation principale">
+            {navigation.map((item) => (
+              <button
+                key={item.id}
+                type="button"
+                onClick={() => goToSection(item.id)}
+                aria-current={onHomePage && active === item.id ? "true" : undefined}
+                className={cn(
+                  "whitespace-nowrap rounded-lg px-3 py-2 text-sm font-medium transition-colors",
+                  linkTone(onHomePage && active === item.id),
+                )}
+              >
+                {item.label}
+              </button>
+            ))}
+          </nav>
+
+          <div className="flex flex-1 items-center justify-end gap-2">
             <button
-              key={item.id}
               type="button"
-              onClick={() => goToSection(item.id)}
-              aria-current={onHomePage && active === item.id ? "true" : undefined}
+              onClick={openContact}
+              className="group hidden min-h-11 items-center rounded-full bg-gradient-brand px-5 text-sm font-semibold text-accent-foreground transition-shadow hover:shadow-glow sm:inline-flex"
+            >
+              Nous contacter
+              {/* La flèche apparaît en glissant au survol */}
+              <span className="grid w-0 place-items-center overflow-hidden opacity-0 transition-all duration-300 ease-out group-hover:ml-2 group-hover:w-4 group-hover:opacity-100">
+                <ArrowRight className="h-4 w-4 shrink-0" />
+              </span>
+            </button>
+            <button
+              type="button"
+              onClick={() => setOpen((v) => !v)}
+              aria-label={open ? "Fermer le menu" : "Ouvrir le menu"}
+              aria-expanded={open}
               className={cn(
-                "whitespace-nowrap rounded-lg px-3 py-2 text-sm font-medium transition-colors",
-                linkTone(onHomePage && active === item.id),
+                "inline-flex h-11 w-11 items-center justify-center rounded-full border lg:hidden",
+                scrolled ? "border-border/60 text-foreground" : "border-white/25 text-white",
               )}
             >
-              {item.label}
+              {open ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
             </button>
-          ))}
-        </nav>
-
-        <div className="flex flex-1 items-center justify-end gap-2">
-          <button
-            type="button"
-            onClick={openContact}
-            className="group hidden min-h-11 items-center rounded-full bg-gradient-brand px-5 text-sm font-semibold text-accent-foreground transition-shadow hover:shadow-glow sm:inline-flex"
-          >
-            Nous contacter
-            {/* La flèche apparaît en glissant au survol */}
-            <span className="grid w-0 place-items-center overflow-hidden opacity-0 transition-all duration-300 ease-out group-hover:ml-2 group-hover:w-4 group-hover:opacity-100">
-              <ArrowRight className="h-4 w-4 shrink-0" />
-            </span>
-          </button>
-          <button
-            type="button"
-            onClick={() => setOpen((v) => !v)}
-            aria-label={open ? "Fermer le menu" : "Ouvrir le menu"}
-            aria-expanded={open}
-            className={cn(
-              "inline-flex h-11 w-11 items-center justify-center rounded-full border lg:hidden",
-              scrolled ? "border-border/60 text-foreground" : "border-white/25 text-white",
-            )}
-          >
-            {open ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
-          </button>
+          </div>
         </div>
       </div>
 
@@ -148,7 +163,7 @@ const Header = () => {
             animate={{ clipPath: "inset(0 0 0% 0)" }}
             exit={{ clipPath: "inset(0 0 100% 0)" }}
             transition={{ duration: 0.6, ease: [0.76, 0, 0.24, 1] }}
-            className="fixed inset-0 -z-10 overflow-y-auto bg-gradient-deep lg:hidden"
+            className="fixed inset-0 -z-10 h-screen overflow-y-auto bg-gradient-deep lg:hidden"
           >
             <div className="absolute inset-0 grid-pattern opacity-[0.06]" aria-hidden="true" />
             <div
@@ -157,7 +172,7 @@ const Header = () => {
             />
 
             <nav
-              className="container relative mx-auto flex min-h-full flex-col justify-center gap-1 px-4 pb-16 pt-28"
+              className="container relative mx-auto flex min-h-screen flex-col justify-center gap-1 px-4 pb-24 pt-28"
               aria-label="Navigation mobile"
             >
               {navigation.map((item, i) => (

@@ -1,4 +1,4 @@
-import { Lightbulb, CheckCircle2, ShieldCheck, Globe2 } from "lucide-react";
+import { Lightbulb, CheckCircle2, ShieldCheck, Globe2, MapPin } from "lucide-react";
 import Reveal from "@/components/Reveal";
 import { cn } from "@/lib/utils";
 
@@ -34,6 +34,15 @@ const strengths = [
     hover: "hover:border-[#F5A623]/50",
   },
   {
+    icon: MapPin,
+    label: "Proximité",
+    title: "Proximité & Accompagnement",
+    text: "Nous sommes présents sur le terrain pour comprendre vos réalités et vous accompagner de près dans votre transformation numérique.",
+    badge: "border-[#10B981]/30 bg-[#10B981]/10",
+    tint: "text-[#10B981]",
+    hover: "hover:border-[#10B981]/50",
+  },
+  {
     icon: Globe2,
     label: "Souveraineté",
     title: "Souveraineté Numérique",
@@ -45,52 +54,52 @@ const strengths = [
 ];
 
 const AboutSection = () => (
-  <section id="a-propos" className="relative scroll-mt-24 overflow-hidden bg-background py-24">
+  <section id="a-propos" className="relative scroll-mt-24 overflow-hidden bg-background py-16 sm:py-20 lg:py-24">
     <div className="absolute inset-0 grid-pattern opacity-[0.04]" aria-hidden="true" />
     <div
-      className="absolute -right-24 top-0 h-80 w-80 rounded-full bg-accent/10 blur-[100px]"
+      className="absolute -right-16 top-0 h-64 w-64 rounded-full bg-accent/10 blur-[80px] sm:-right-24 sm:h-80 sm:w-80 sm:blur-[100px]"
       aria-hidden="true"
     />
 
     <div className="container relative mx-auto px-4">
       <div className="mx-auto max-w-2xl text-center">
         <Reveal>
-          <span className="inline-flex items-center rounded-full border border-accent/30 bg-accent/10 px-4 py-1.5 text-xs font-semibold uppercase tracking-[0.2em] text-accent">
+          <span className="inline-flex items-center rounded-full border border-accent/30 bg-accent/10 px-3 py-1 text-[10px] font-semibold uppercase tracking-[0.2em] text-accent sm:px-4 sm:py-1.5 sm:text-xs">
             Notre différence
           </span>
         </Reveal>
 
         <Reveal delay={0.08}>
-          <h2 className="mt-6 font-display text-4xl font-bold leading-tight lg:text-5xl">
+          <h2 className="mt-4 font-display text-2xl font-bold leading-tight sm:mt-6 sm:text-3xl lg:text-5xl">
             Pourquoi Data City <span className="text-gradient">Ivoire</span> ?
           </h2>
         </Reveal>
 
         <Reveal delay={0.16}>
-          <p className="mt-5 leading-relaxed text-muted-foreground">
+          <p className="mt-4 text-sm leading-relaxed text-muted-foreground sm:mt-5">
             Nous combinons expertise technologique globale et connaissance profonde du contexte
             africain pour créer des solutions qui transforment réellement les organisations.
           </p>
         </Reveal>
       </div>
 
-      <div className="mt-16 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+      <div className="mt-12 grid gap-4 sm:mt-14 sm:gap-6 sm:grid-cols-2 lg:mt-16 lg:grid-cols-4">
         {strengths.map((s, i) => (
           <Reveal key={s.label} delay={i * 0.08}>
             <article
               className={cn(
-                "group h-full rounded-2xl border border-border bg-card p-7 transition-all duration-300 hover:-translate-y-1 hover:shadow-elevated",
+                "group h-full rounded-2xl border border-border bg-card p-5 transition-all duration-300 hover:-translate-y-1 hover:shadow-elevated sm:p-6 lg:p-7",
                 s.hover,
               )}
             >
-              <span className={cn("grid h-12 w-12 place-items-center rounded-xl border", s.badge)}>
-                <s.icon className={cn("h-5 w-5", s.tint)} />
+              <span className={cn("grid h-10 w-10 place-items-center rounded-xl border sm:h-12 sm:w-12", s.badge)}>
+                <s.icon className={cn("h-4 w-4 sm:h-5 sm:w-5", s.tint)} />
               </span>
-              <p className={cn("mt-6 text-xs font-semibold uppercase tracking-[0.15em]", s.tint)}>
+              <p className={cn("mt-4 text-[10px] font-semibold uppercase tracking-[0.15em] sm:mt-6 sm:text-xs", s.tint)}>
                 {s.label}
               </p>
-              <h3 className="mt-2 font-display text-lg font-bold leading-snug">{s.title}</h3>
-              <p className="mt-3 text-sm leading-relaxed text-muted-foreground">{s.text}</p>
+              <h3 className="mt-2 font-display text-base font-bold leading-snug sm:text-lg">{s.title}</h3>
+              <p className="mt-2 text-sm leading-relaxed text-muted-foreground sm:mt-3">{s.text}</p>
             </article>
           </Reveal>
         ))}

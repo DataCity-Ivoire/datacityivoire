@@ -144,10 +144,21 @@ const AfricaCanvas = () => {
     const dragOffset = { x: 0, y: 0 };
 
     const onPointerMove = (e: PointerEvent) => {
-      const rect = mount.getBoundingClientRect();
-      target.x = ((e.clientX - rect.left) / rect.width - 0.5) * 2;
-      target.y = ((e.clientY - rect.top) / rect.height - 0.5) * 2;
+      // Le suivi façon parallaxe ne doit réagir qu'à une vraie souris. Cet
+      // écouteur est posé sur `window` (pour continuer de suivre le curseur
+      // même hors de la carte) : sur mobile, faire défiler la page au doigt
+      // déclenche aussi des `pointermove` de type "touch" sur tout l'écran,
+      // ce qui était pris pour un mouvement de souris et décalait le
+      // continent hors cadre pendant un simple scroll.
+      if (e.pointerType === "mouse") {
+        const rect = mount.getBoundingClientRect();
+        target.x = ((e.clientX - rect.left) / rect.width - 0.5) * 2;
+        target.y = ((e.clientY - rect.top) / rect.height - 0.5) * 2;
+      }
 
+      // Le glisser-déposer, lui, reste valable au doigt : il ne s'active que
+      // si le geste a démarré sur la carte (`dragging` posé par `pointerdown`
+      // sur `mount`), donc un scroll ailleurs sur la page ne le déclenche pas.
       if (dragging) {
         spin.y += (e.clientX - lastDrag.x) * 0.006;
         spin.x += (e.clientY - lastDrag.y) * 0.004;

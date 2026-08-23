@@ -26,14 +26,14 @@ const Footer = () => {
 
   return (
   <footer className="bg-gradient-deep text-white">
-    <div className="container mx-auto grid gap-12 px-4 py-16 md:grid-cols-2 lg:grid-cols-4">
+    <div className="container mx-auto grid gap-10 px-4 py-12 sm:gap-12 sm:px-6 sm:py-16 md:grid-cols-2 lg:grid-cols-4">
       <div>
-        <Logo textClassName="text-white" markClassName="h-11" />
+        <Logo textClassName="text-white" markClassName="h-10 sm:h-11" />
         <p className="mt-3 max-w-xs text-sm leading-relaxed text-white/60">
           {site.slogan} Nous construisons des solutions numériques durables au service des
           organisations africaines.
         </p>
-        <div className="mt-6 flex flex-wrap gap-2.5">
+        <div className="mt-5 flex flex-wrap gap-2.5 sm:mt-6">
           {site.socials.map((s) => {
             const Icon = SOCIAL_ICONS[s.icon];
             return (
@@ -44,7 +44,7 @@ const Footer = () => {
                 rel="noreferrer noopener"
                 aria-label={s.label}
                 title={s.label}
-                className="grid h-10 w-10 place-items-center rounded-full border border-white/15 text-white/70 transition-all duration-300 hover:-translate-y-0.5 hover:border-accent hover:bg-accent hover:text-accent-foreground"
+                className="grid h-9 w-9 place-items-center rounded-full border border-white/15 text-white/70 transition-all duration-300 hover:-translate-y-0.5 hover:border-accent hover:bg-accent hover:text-accent-foreground sm:h-10 sm:w-10"
               >
                 <Icon className="h-4 w-4" />
               </a>
@@ -54,8 +54,8 @@ const Footer = () => {
       </div>
 
       <div>
-        <h2 className="text-sm font-semibold uppercase tracking-wider text-accent">Navigation</h2>
-        <ul className="mt-4 space-y-2.5 text-sm text-white/60">
+        <h2 className="text-xs font-semibold uppercase tracking-wider text-accent sm:text-sm">Navigation</h2>
+        <ul className="mt-3 space-y-2 text-sm text-white/60 sm:mt-4 sm:space-y-2.5">
           {allSections.map((l) => (
             <li key={l.id}>
               {l.id === "contact" ? (
@@ -77,8 +77,8 @@ const Footer = () => {
       </div>
 
       <div>
-        <h2 className="text-sm font-semibold uppercase tracking-wider text-accent">Expertises</h2>
-        <ul className="mt-4 space-y-2.5 text-sm text-white/60">
+        <h2 className="text-xs font-semibold uppercase tracking-wider text-accent sm:text-sm">Expertises</h2>
+        <ul className="mt-3 space-y-2 text-sm text-white/60 sm:mt-4 sm:space-y-2.5">
           {expertises.slice(0, 7).map((e) => (
             <li key={e.title}>
               <a href="/#expertises" className="transition-colors hover:text-accent">
@@ -90,8 +90,8 @@ const Footer = () => {
       </div>
 
       <div>
-        <h2 className="text-sm font-semibold uppercase tracking-wider text-accent">Contact</h2>
-        <ul className="mt-4 space-y-3 text-sm text-white/60">
+        <h2 className="text-xs font-semibold uppercase tracking-wider text-accent sm:text-sm">Contact</h2>
+        <ul className="mt-3 space-y-2.5 text-sm text-white/60 sm:mt-4 sm:space-y-3">
           <li className="flex items-start gap-2.5">
             <MapPin className="mt-0.5 h-4 w-4 shrink-0 text-accent" /> {site.address}
           </li>
@@ -112,9 +112,9 @@ const Footer = () => {
     </div>
 
     <div className="border-t border-white/10">
-      <div className="container mx-auto flex flex-col items-center justify-between gap-4 px-4 py-6 text-xs text-white/45 md:flex-row">
+      <div className="container mx-auto flex flex-col items-center gap-4 px-4 py-5 text-[10px] text-white/45 sm:px-6 sm:py-6 sm:text-xs md:flex-row md:justify-between">
         <p>© {new Date().getFullYear()} {site.name}. Tous droits réservés.</p>
-        <div className="flex flex-wrap items-center justify-center gap-5">
+        <div className="flex flex-wrap items-center justify-center gap-4 sm:gap-5">
           <Link to="/mentions-legales" className="hover:text-accent">
             Mentions légales
           </Link>

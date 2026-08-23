@@ -6,29 +6,29 @@ import { onSectionLink } from "@/lib/scroll";
 import illustration from "@/assets/hero-illustration.jpg";
 
 const DataShowcase = () => (
-  <section className="relative overflow-hidden bg-background py-24">
+  <section className="relative overflow-hidden bg-background py-16 sm:py-20 lg:py-24">
     {/* Grandes formes décoratives en arrière-plan */}
     <div
-      className="pointer-events-none absolute left-1/2 top-1/2 h-[44rem] w-[44rem] -translate-x-1/2 -translate-y-1/2 rounded-full border-[3rem] border-accent/15"
+      className="pointer-events-none absolute left-1/2 top-1/2 h-[32rem] w-[32rem] -translate-x-1/2 -translate-y-1/2 rounded-full border-[2rem] border-accent/15 sm:h-[44rem] sm:w-[44rem] sm:border-[3rem]"
       aria-hidden="true"
     />
     <div
-      className="pointer-events-none absolute -right-40 top-10 h-80 w-80 rounded-full bg-secondary/15 blur-[110px]"
+      className="pointer-events-none absolute -right-24 top-10 h-64 w-64 rounded-full bg-secondary/15 blur-[90px] sm:-right-40 sm:h-80 sm:w-80 sm:blur-[110px]"
       aria-hidden="true"
     />
 
     <div className="container relative mx-auto px-4">
       <Reveal className="mx-auto max-w-2xl text-center">
-        <p className="text-sm font-semibold uppercase tracking-[0.25em] text-accent">
+        <p className="text-xs font-semibold uppercase tracking-[0.2em] text-accent sm:text-sm sm:tracking-[0.25em]">
           La donnée en mouvement
         </p>
-        <AnimatedHeading className="mt-4 font-display text-3xl font-bold leading-tight lg:text-5xl">
+        <AnimatedHeading className="mt-3 font-display text-2xl font-bold leading-tight sm:mt-4 sm:text-3xl lg:text-5xl">
           Un continent, Un Réseau, Une Infrastructure
         </AnimatedHeading>
       </Reveal>
 
       <Reveal delay={0.1}>
-        <figure className="group relative isolate mx-auto mt-14 max-w-4xl overflow-hidden rounded-3xl border border-border/60 shadow-elevated">
+        <figure className="group relative isolate mx-auto mt-10 max-w-4xl overflow-hidden rounded-2xl border border-border/60 shadow-elevated sm:mt-12 sm:rounded-3xl">
           <img
             src={illustration}
             alt="Le continent africain représenté comme un réseau de données interconnectées"
