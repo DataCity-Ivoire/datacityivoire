@@ -192,7 +192,7 @@
   .marquee__track {
     display: flex;
     width: max-content;
-    animation: marquee 38s linear infinite;
+    animation: marquee 40s linear infinite;
   }
   .marquee__group {
     display: flex;
@@ -205,8 +205,9 @@
 }
 
 @keyframes marquee {
-  from { transform: translateX(0); }
-  to { transform: translateX(-50%); }
+  0% { transform: translateX(0); }
+  96% { transform: translateX(-50%); }
+  100% { transform: translateX(-50%); }
 }
 
 @keyframes float {

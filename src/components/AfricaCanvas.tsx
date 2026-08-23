@@ -178,7 +178,7 @@ const AfricaCanvas = () => {
       const { clientWidth, clientHeight } = mount;
       if (!clientWidth || !clientHeight) return;
       renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
-      renderer.setSize(clientWidth, clientHeight, false);
+      renderer.setSize(clientWidth, clientHeight);
       camera.aspect = clientWidth / clientHeight;
       camera.updateProjectionMatrix();
     };

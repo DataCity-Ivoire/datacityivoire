@@ -5,7 +5,7 @@ export const site = {
   slogan: "L'Afrique connectée, intelligente et souveraine.",
   description:
     "Nous aidons les organisations africaines à accélérer leur transformation numérique grâce à la donnée, l'intelligence artificielle et des solutions technologiques sur mesure.",
-  email: "datacityivoire@gmail.com",
+  email: "contact@datacityivoire.ci",
   // Numéro repris du bouton WhatsApp, où il était codé en dur. Il diverge du
   // placeholder qui figurait ici : à confirmer avant mise en ligne.
   phone: "+225 07 19 81 17 17",
@@ -14,15 +14,14 @@ export const site = {
   // TODO : remplacer par les vrais profils (ces liens pointent vers les
   // pages d'accueil des plateformes, pas vers les comptes de l'entreprise).
   socials: [
-    { label: "LinkedIn", href: "https://www.linkedin.com", icon: "linkedin" as const },
-    { label: "Facebook", href: "https://www.facebook.com", icon: "facebook" as const },
-    { label: "Instagram", href: "https://www.instagram.com", icon: "instagram" as const },
-    { label: "X", href: "https://x.com", icon: "x" as const },
-    { label: "YouTube", href: "https://www.youtube.com", icon: "youtube" as const },
-    { label: "GitHub", href: "https://github.com", icon: "github" as const },
+    { label: "LinkedIn", href: "https://www.linkedin.com/company/datacityivoire", icon: "linkedin" as const },
+    { label: "Facebook", href: "https://www.facebook.com/DataCityIvoire", icon: "facebook" as const },
+    { label: "Instagram", href: "https://www.instagram.com/DataCityIvoire", icon: "instagram" as const },
+    { label: "X", href: "https://x.com/DataCityIvoire", icon: "x" as const },
+    { label: "YouTube", href: "https://www.youtube.com/@DataCityIvoire", icon: "youtube" as const },
   ],
-};
 
+};
 export interface NavItem {
   label: string;
   /** Identifiant de la section sur la page unique. */
@@ -117,6 +116,24 @@ export const expertises = [
     title: "SIG & géodonnées",
     description:
       "Cartographie, analyse spatiale et valorisation des données géographiques pour le territoire.",
+  },
+  {
+    icon: Rocket,
+    title: "Robotique et prototypes",
+    description:
+      "Développement de solutions robotiques et de prototypes fonctionnels pour des applications innovantes.",
+  },
+  {
+    icon: Compass,
+    title: "UX/UI et design culturel",
+    description:
+      "Expériences utilisateur optimisées et designs culturellement adaptés pour des applications numériques pertinentes.",
+  },
+  {
+    icon: Map,
+    title: "Recherche & Développement (R&D)",
+    description:
+      "Investissements dans la recherche fondamentale et appliquée, pour développer des solutions innovantes et rester à la pointe de la technologie.",
   },
 ];
 

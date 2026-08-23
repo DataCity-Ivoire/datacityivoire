@@ -3,10 +3,10 @@ import { useReducedMotion } from "framer-motion";
 import Reveal from "@/components/Reveal";
 
 const stats = [
-  { to: 50, suffix: "+", label: "Projets livrés", sub: "Avec succès" },
-  { to: 10, suffix: "+", label: "Experts", sub: "En technologie" },
-  { to: 5, suffix: "+", label: "Années d'exp.", sub: "Sur le marché" },
-  { to: 98, suffix: "%", label: "Satisfaction", sub: "Clients satisfaits" },
+  { to: 2, suffix: "+", label: "Projets livrés", sub: "Avec succès" },
+  { to: 2, suffix: "+", label: "Experts", sub: "En technologie" },
+  { to: 1, suffix: "+", label: "Années d'exp.", sub: "Sur le marché" },
+  { to: 95, suffix: "%", label: "Satisfaction", sub: "Clients satisfaits" },
 ];
 
 const strengths = [
