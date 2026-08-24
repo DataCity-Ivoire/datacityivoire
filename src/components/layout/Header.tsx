@@ -44,14 +44,30 @@ const Header = () => {
       .filter((el): el is HTMLElement => el !== null);
     if (!targets.length) return;
 
+    // Le ratio d'intersection est calculé par rapport à la hauteur totale de
+    // chaque section, pas à celle de la bande d'observation : une section
+    // longue (ex. Méthodologie, plusieurs écrans de haut) ne peut jamais
+    // dépasser 10% de sa propre hauteur en intersection avec cette bande
+    // réduite, donc un seuil de 0.1 ne se déclenchait jamais pour elle.
+    // Des seuils bas + un état persistant (les callbacks ne renvoient que
+    // les cibles dont l'état a changé, pas toutes celles actuellement
+    // visibles) réglent le problème pour les sections de toute hauteur.
+    const ratios = new Map<string, number>();
+
     const observer = new IntersectionObserver(
       (entries) => {
-        const visible = entries
-          .filter((e) => e.isIntersecting)
-          .sort((a, b) => b.intersectionRatio - a.intersectionRatio)[0];
-        if (visible) setActive(visible.target.id);
+        entries.forEach((e) => ratios.set(e.target.id, e.isIntersecting ? e.intersectionRatio : 0));
+        let bestId: string | null = null;
+        let bestRatio = 0;
+        ratios.forEach((ratio, id) => {
+          if (ratio > bestRatio) {
+            bestRatio = ratio;
+            bestId = id;
+          }
+        });
+        if (bestId) setActive(bestId);
       },
-      { rootMargin: "-20% 0px -60% 0px", threshold: [0.1, 0.5] },
+      { rootMargin: "-20% 0px -60% 0px", threshold: [0, 0.05, 0.1, 0.25, 0.5, 0.75, 1] },
     );
 
     targets.forEach((t) => observer.observe(t));
