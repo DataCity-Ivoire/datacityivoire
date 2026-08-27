@@ -123,14 +123,14 @@ Data City Ivoire répond à cet enjeu en développant une infrastructure numéri
 
 👉 https://datacityivoire.vercel.app
 
-👉 https://datacityivoire.com (Domaine en cours)
+👉 https://datacityivoire.ci
 
 ---
 
 ## 📞 Contact
 
-- Email : datacityivoire@gmail.com  
-- WhatsApp : +225 XX XX XX XX  
+- Emails : contact@datacityivoire.ci / support@datacityivoire.ci / direction@datacityivoire.ci 
+- WhatsApp : +225 0719811717  
 - Localisation : Abidjan, Côte d’Ivoire  
 
 ---

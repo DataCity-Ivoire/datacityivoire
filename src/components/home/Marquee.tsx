@@ -5,8 +5,12 @@ const items = [
   "Cloud",
   "Applications Web & Mobile",
   "Automatisation",
-  "Souveraineté numérique",
   "SIG & géodonnées",
+  "Robotique et prototypes",
+  "UX/UI et design culturel",
+  "Recherche & Développement (R&D)",
+  "Transformation numérique",
+  "Conseil technologique",
 ];
 
 const Marquee = () => (

@@ -1,4 +1,4 @@
-import { Lightbulb, CheckCircle2, ShieldCheck, Globe2, MapPin } from "lucide-react";
+import { Lightbulb, CheckCircle2, Globe2, Users, Heart } from "lucide-react";
 import Reveal from "@/components/Reveal";
 import { cn } from "@/lib/utils";
 
@@ -9,47 +9,47 @@ const strengths = [
   {
     icon: Lightbulb,
     label: "Innovation",
-    title: "Innovation Continue",
-    text: "Nous investissons dans les technologies les plus avancées pour offrir des solutions qui anticipent les besoins de demain. R&D au cœur de notre ADN.",
+    title: "Innovation",
+    text: "Développement de solutions nouvelles, pragmatiques et évolutives.",
     badge: "border-[#1A6BFF]/30 bg-[#1A6BFF]/10",
     tint: "text-[#1A6BFF]",
     hover: "hover:border-[#1A6BFF]/50",
   },
   {
+    icon: Globe2,
+    label: "Souveraineté",
+    title: "Souveraineté",
+    text: "Contrôle local des données, des infrastructures et des décisions technologiques.",
+    badge: "border-[#7C3AED]/30 bg-[#7C3AED]/10",
+    tint: "text-[#7C3AED]",
+    hover: "hover:border-[#7C3AED]/50",
+  },
+  {
     icon: CheckCircle2,
     label: "Excellence",
-    title: "Excellence Opérationnelle",
-    text: "Chaque projet est traité avec une rigueur et une qualité d'exécution qui reflètent notre engagement envers l'excellence à chaque étape de la chaîne de valeur.",
+    title: "Excellence",
+    text: "Respect des standards internationaux (sécurité, performance, fiabilité).",
     badge: "border-[#00C8B4]/30 bg-[#00C8B4]/10",
     tint: "text-[#00C8B4]",
     hover: "hover:border-[#00C8B4]/50",
   },
   {
-    icon: ShieldCheck,
-    label: "Fiabilité",
-    title: "Fiabilité & Sécurité",
-    text: "Nos solutions sont conçues pour une disponibilité maximale et une sécurité renforcée. Nous protégeons vos données et garantissons la continuité de vos opérations.",
+    icon: Users,
+    label: "Proximité",
+    title: "Proximité",
+    text: "Solutions conçues pour et avec les utilisateurs locaux.",
     badge: "border-[#F5A623]/30 bg-[#F5A623]/10",
     tint: "text-[#F5A623]",
     hover: "hover:border-[#F5A623]/50",
   },
   {
-    icon: MapPin,
-    label: "Proximité",
-    title: "Proximité & Accompagnement",
-    text: "Nous sommes présents sur le terrain pour comprendre vos réalités et vous accompagner de près dans votre transformation numérique.",
-    badge: "border-[#10B981]/30 bg-[#10B981]/10",
-    tint: "text-[#10B981]",
-    hover: "hover:border-[#10B981]/50",
-  },
-  {
-    icon: Globe2,
-    label: "Souveraineté",
-    title: "Souveraineté Numérique",
-    text: "Nous construisons une infrastructure technologique africaine indépendante, en favorisant la maîtrise locale des données et des systèmes d'information.",
-    badge: "border-[#7C3AED]/30 bg-[#7C3AED]/10",
-    tint: "text-[#7C3AED]",
-    hover: "hover:border-[#7C3AED]/50",
+    icon: Heart,
+    label: "Fierté africaine",
+    title: "Fierté africaine",
+    text: "Valorisation des talents, des langues et des usages africains.",
+    badge: "border-[#F58300]/30 bg-[#F58300]/10",
+    tint: "text-[#F58300]",
+    hover: "hover:border-[#F58300]/50",
   },
 ];
 
@@ -83,7 +83,7 @@ const AboutSection = () => (
         </Reveal>
       </div>
 
-      <div className="mt-12 grid gap-4 sm:mt-14 sm:gap-6 sm:grid-cols-2 lg:mt-16 lg:grid-cols-4">
+      <div className="mt-12 grid gap-4 sm:mt-14 sm:gap-6 sm:grid-cols-2 lg:mt-16 lg:grid-cols-3">
         {strengths.map((s, i) => (
           <Reveal key={s.label} delay={i * 0.08}>
             <article
@@ -104,6 +104,20 @@ const AboutSection = () => (
           </Reveal>
         ))}
       </div>
+
+      {/* Positionnement stratégique */}
+      <Reveal delay={0.4}>
+        <div className="mx-auto mt-16 max-w-3xl rounded-2xl border border-accent/20 bg-accent/5 px-8 py-10 text-center">
+          <p className="text-xs font-semibold uppercase tracking-[0.2em] text-accent">
+            Positionnement stratégique
+          </p>
+          <p className="mt-4 font-display text-xl font-semibold leading-relaxed text-foreground lg:text-2xl">
+            Data City Ivoire se positionne comme{" "}
+            <span className="text-gradient">l'âme numérique de l'Afrique</span> : un acteur
+            crédible, structurant et visionnaire.
+          </p>
+        </div>
+      </Reveal>
     </div>
   </section>
 );
