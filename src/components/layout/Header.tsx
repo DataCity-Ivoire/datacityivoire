@@ -88,8 +88,18 @@ const Header = () => {
         navigate(`/#${id}`);
         return;
       }
-      document.getElementById(id)?.scrollIntoView({ behavior: "smooth", block: "start" });
-      window.history.replaceState(null, "", id === "accueil" ? "/" : `/#${id}`);
+      // Safari/Chrome mobile n'a souvent pas encore « raccroché » le scroll
+      // dans la même frame où `overflow: hidden` vient d'être retiré : un
+      // `scrollIntoView` synchrone à cet instant échoue silencieusement sur
+      // téléphone (le bureau, qui ne touche jamais ce verrou, n'est pas
+      // affecté). Différer l'appel de deux frames laisse le temps au
+      // navigateur de reprendre la main sur le défilement.
+      requestAnimationFrame(() => {
+        requestAnimationFrame(() => {
+          document.getElementById(id)?.scrollIntoView({ behavior: "smooth", block: "start" });
+          window.history.replaceState(null, "", id === "accueil" ? "/" : `/#${id}`);
+        });
+      });
     },
     [navigate, onHomePage],
   );
