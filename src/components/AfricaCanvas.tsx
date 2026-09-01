@@ -189,7 +189,11 @@ const AfricaCanvas = () => {
       const { clientWidth, clientHeight } = mount;
       if (!clientWidth || !clientHeight) return;
       renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
-      renderer.setSize(clientWidth, clientHeight);
+      // Le 3e argument (`updateStyle`) doit rester à `false` : sans lui, Three.js
+      // fixe un `style.width`/`height` en pixels sur le <canvas>, ce qui bloque le
+      // rétrécissement de sa colonne CSS Grid (comportement `min-width: auto` par
+      // défaut) et fait déborder toute la mise en page du Hero à l'écran large.
+      renderer.setSize(clientWidth, clientHeight, false);
       camera.aspect = clientWidth / clientHeight;
       camera.updateProjectionMatrix();
     };
