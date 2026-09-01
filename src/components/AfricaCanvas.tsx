@@ -144,6 +144,14 @@ const AfricaCanvas = () => {
     const target = { x: 0, y: 0 };
     // --- Glisser-déposer pour faire pivoter, avec inertie ---
     let dragging = false;
+    let dragPointerId: number | null = null;
+    // Au doigt, on ne sait pas encore si un appui sur la carte est le début
+    // d'un balayage horizontal (rotation voulue) ou d'un simple défilement
+    // vertical de la page — la carte est juste sous le header, donc un
+    // scroll y démarre souvent. `pendingTouchId` retient ce doigt le temps
+    // de voir dans quelle direction il bouge, avant de décider.
+    let pendingTouchId: number | null = null;
+    let touchStart = { x: 0, y: 0 };
     let lastDrag = { x: 0, y: 0 };
     const spin = { x: 0, y: 0 };
     const dragOffset = { x: 0, y: 0 };
@@ -161,10 +169,26 @@ const AfricaCanvas = () => {
         target.y = ((e.clientY - rect.top) / rect.height - 0.5) * 2;
       }
 
-      // Le glisser-déposer, lui, reste valable au doigt : il ne s'active que
-      // si le geste a démarré sur la carte (`dragging` posé par `pointerdown`
-      // sur `mount`), donc un scroll ailleurs sur la page ne le déclenche pas.
-      if (dragging) {
+      if (e.pointerType !== "mouse" && e.pointerId === pendingTouchId) {
+        const dx = e.clientX - touchStart.x;
+        const dy = e.clientY - touchStart.y;
+        if (Math.abs(dy) > Math.abs(dx) && Math.abs(dy) > 6) {
+          // Geste surtout vertical : c'est un défilement de page, pas une
+          // rotation. On ne capture jamais le pointeur, la page continue
+          // de défiler normalement.
+          pendingTouchId = null;
+        } else if (Math.abs(dx) > Math.abs(dy) && Math.abs(dx) > 6) {
+          dragging = true;
+          dragPointerId = e.pointerId;
+          pendingTouchId = null;
+          mount.setPointerCapture(e.pointerId);
+          mount.style.cursor = "grabbing";
+          lastDrag = { x: e.clientX, y: e.clientY };
+        }
+        return;
+      }
+
+      if (dragging && e.pointerId === dragPointerId) {
         spin.y += (e.clientX - lastDrag.x) * 0.006;
         spin.x += (e.clientY - lastDrag.y) * 0.004;
         lastDrag = { x: e.clientX, y: e.clientY };
@@ -172,13 +196,22 @@ const AfricaCanvas = () => {
     };
 
     const onPointerDown = (e: PointerEvent) => {
-      dragging = true;
-      lastDrag = { x: e.clientX, y: e.clientY };
-      mount.setPointerCapture(e.pointerId);
-      mount.style.cursor = "grabbing";
+      if (e.pointerType === "mouse") {
+        dragging = true;
+        dragPointerId = e.pointerId;
+        lastDrag = { x: e.clientX, y: e.clientY };
+        mount.setPointerCapture(e.pointerId);
+        mount.style.cursor = "grabbing";
+      } else {
+        pendingTouchId = e.pointerId;
+        touchStart = { x: e.clientX, y: e.clientY };
+      }
     };
     const onPointerUp = (e: PointerEvent) => {
+      if (e.pointerId === pendingTouchId) pendingTouchId = null;
+      if (e.pointerId !== dragPointerId) return;
       dragging = false;
+      dragPointerId = null;
       if (mount.hasPointerCapture(e.pointerId)) mount.releasePointerCapture(e.pointerId);
       mount.style.cursor = "grab";
     };
@@ -223,6 +256,12 @@ const AfricaCanvas = () => {
         if (!dragging) {
           spin.x *= 0.94;
           spin.y *= 0.94;
+          // Filet de sécurité : même après une rotation manuelle (ou un
+          // balayage mal interprété comme tel), la carte revient doucement à
+          // sa position centrée dès qu'on ne la manipule plus, au lieu de
+          // rester inclinée indéfiniment et de masquer une partie du continent.
+          dragOffset.x *= 0.985;
+          dragOffset.y *= 0.985;
         }
         dragOffset.x += spin.x;
         dragOffset.y += spin.y;
