@@ -25,12 +25,7 @@ const RINGS = [MAINLAND, MADAGASCAR];
 const GRID_STEP = 1.15;
 const CENTER_LON = 17;
 const CENTER_LAT = 1.5;
-// À 0.068, le continent projeté occupait quasiment tout le champ de vision de
-// la caméra (marge ~10%) : la moindre rotation (animation d'ambiance, survol,
-// glisser) suffisait à faire sortir un bord du cadre à cause de la
-// perspective. Valeur réduite pour garder une marge confortable en toute
-// circonstance.
-const SCALE = 0.055;
+const SCALE = 0.062;
 
 const insideRing = (lon: number, lat: number, ring: [number, number][]) => {
   let hit = false;
@@ -61,6 +56,15 @@ const AfricaCanvas = () => {
 
     const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true, powerPreference: "low-power" });
     renderer.setClearColor(0x000000, 0);
+    // `setSize(..., false)` plus bas règle la taille du tampon de dessin
+    // (largeur × densité de pixels) sans toucher au CSS. Sans taille CSS,
+    // un <canvas> s'affiche à la taille de son attribut `width` : sur un
+    // écran à densité 2, il occuperait le double de son cadre et serait
+    // rogné. On fixe donc la taille d'affichage en pourcentage, une bonne
+    // fois pour toutes : elle suit le cadre quelle que soit la densité.
+    renderer.domElement.style.width = "100%";
+    renderer.domElement.style.height = "100%";
+    renderer.domElement.style.display = "block";
     mount.appendChild(renderer.domElement);
 
     const group = new THREE.Group();
