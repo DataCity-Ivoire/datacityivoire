@@ -25,7 +25,12 @@ const RINGS = [MAINLAND, MADAGASCAR];
 const GRID_STEP = 1.15;
 const CENTER_LON = 17;
 const CENTER_LAT = 1.5;
-const SCALE = 0.068;
+// À 0.068, le continent projeté occupait quasiment tout le champ de vision de
+// la caméra (marge ~10%) : la moindre rotation (animation d'ambiance, survol,
+// glisser) suffisait à faire sortir un bord du cadre à cause de la
+// perspective. Valeur réduite pour garder une marge confortable en toute
+// circonstance.
+const SCALE = 0.055;
 
 const insideRing = (lon: number, lat: number, ring: [number, number][]) => {
   let hit = false;
